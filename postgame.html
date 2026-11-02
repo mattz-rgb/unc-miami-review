@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Carolina vs. Canes Postgame</title>
+<meta name="description" content="Matt Z&#x27;s postgame breakdown of UNC&#x27;s 38-35 loss to No. 1 Miami: grades, snap counts and what went wrong.">
+<meta name="theme-color" content="#7bafd4">
+<meta property="og:type" content="website">
+<meta property="og:title" content="UNC vs. Miami Postgame Breakdown">
+<meta property="og:description" content="Matt Z&#x27;s postgame breakdown of UNC&#x27;s 38-35 loss to No. 1 Miami: grades, snap counts and what went wrong.">
+<meta property="og:image" content="https://mattz-rgb.github.io/unc-miami-preview/og-postgame.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0}
+/* Layout: a postgame program. Scoreboard hero, then the story, the chart, grade stamps on every position group and a report card at the end. Carolina blue against Miami orange; grades run green to red. */
+:root {
+  color-scheme: dark;
+  --bg: #0a1424;
+  --surface: #111d33;
+  --surface-2: #182843;
+  --fg: #e9eff8;
+  --muted: #93a4bd;
+  --line: #243656;
+  --unc: #7bafd4;
+  --unc-bg: #12335a;
+  --mia: #f47321;
+  --mia-bg: #3b1d0a;
+  --ga: #3ecf8e;
+  --gb: #9bd35a;
+  --gc: #e6b93a;
+  --gd: #f0873a;
+  --gf: #e2574c;
+  --display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --bg: #f2f5f9; --surface: #ffffff; --surface-2: #e8eef6; --fg: #0d1b2e; --muted: #53677f; --line: #d1dbe8;
+    --unc: #2a6899; --unc-bg: #dbe9f6; --mia: #cf5208; --mia-bg: #fde5d3;
+    --ga: #17825a; --gb: #5e8f12; --gc: #9a6f06; --gd: #b8530f; --gf: #bf3a30;
+  }
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f2f5f9; --surface: #ffffff; --surface-2: #e8eef6; --fg: #0d1b2e; --muted: #53677f; --line: #d1dbe8;
+  --unc: #2a6899; --unc-bg: #dbe9f6; --mia: #cf5208; --mia-bg: #fde5d3;
+  --ga: #17825a; --gb: #5e8f12; --gc: #9a6f06; --gd: #b8530f; --gf: #bf3a30;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.65; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+a { color: var(--unc); }
+p { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--display); text-transform: uppercase; letter-spacing: 0.02em; line-height: 1; margin: 0; text-wrap: balance; }
+.wrap { width: 100%; max-width: 1160px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a:focus-visible { outline: 2px solid var(--unc); outline-offset: 3px; border-radius: 2px; }
+
+/* nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.navin { display: flex; align-items: center; gap: 22px; padding-block: 12px; overflow-x: auto; scrollbar-width: none; }
+.navin nav { display: flex; gap: 20px; }
+.brand { font-family: var(--display); font-weight: 900; font-size: 19px; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; }
+.nav a { color: var(--muted); text-decoration: none; font-size: 12.5px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
+.nav a:hover, .nav a.on { color: var(--fg); }
+.prog { height: 2px; background: transparent; }
+.prog i { display: block; height: 2px; width: 0; background: linear-gradient(90deg, var(--unc), var(--mia)); }
+
+/* hero */
+.hero { padding-block: 36px 8px; }
+.kicker { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 18px; margin-bottom: 16px; }
+.kicker span:first-child { color: var(--fg); }
+.scoreboard { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); border: 1px solid var(--line); animation: rise .7s ease-out both; }
+.team { padding: 26px clamp(16px, 3vw, 38px) 24px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.team.unc { background: var(--unc-bg); }
+.team.mia { background: var(--mia-bg); text-align: right; align-items: flex-end; }
+.rank { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.team h1 { font-size: clamp(30px, 4.6vw, 62px); font-weight: 900; overflow-wrap: anywhere; }
+.team.unc h1, .team.unc .num { color: var(--unc); }
+.team.mia h1, .team.mia .num { color: var(--mia); }
+.num { font-family: var(--display); font-weight: 900; font-size: clamp(88px, 15vw, 190px); line-height: .82; letter-spacing: -.01em; margin-top: 6px; font-variant-numeric: tabular-nums; }
+.meta { font-size: 14px; color: var(--muted); }
+.mid { background: var(--surface); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 20px clamp(14px, 2.4vw, 32px); border-inline: 1px solid var(--line); }
+.final { font-family: var(--display); font-weight: 900; font-size: 24px; letter-spacing: .24em; text-transform: uppercase; color: var(--fg); }
+.ls { border-collapse: collapse; font-family: var(--mono); font-size: 14px; font-variant-numeric: tabular-nums; }
+.ls th, .ls td { padding: 5px 10px; text-align: center; border: 0; }
+.ls thead th { color: var(--muted); font-size: 11px; font-weight: 500; }
+.ls tbody th { text-align: left; font-weight: 500; }
+.ls tr.u th, .ls tr.u td { color: var(--unc); }
+.ls tr.m th, .ls tr.m td { color: var(--mia); }
+.ls td.t { font-weight: 500; font-size: 17px; border-left: 1px solid var(--line); }
+.ls tbody tr + tr td, .ls tbody tr + tr th { border-top: 1px solid var(--line); }
+.tg { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+
+/* grade stamp */
+.stamp { --c: var(--ga); position: relative; display: inline-flex; align-items: center; justify-content: center; flex: none; width: 64px; height: 64px; border-radius: 50%; border: 3px solid var(--c); color: var(--c); font-family: var(--display); font-weight: 900; transform: rotate(-5deg); background: color-mix(in srgb, var(--c) 12%, transparent); box-shadow: inset 0 0 0 3px var(--bg), inset 0 0 0 4px color-mix(in srgb, var(--c) 45%, transparent); animation: stampin .5s cubic-bezier(.2, 1.4, .4, 1) both; }
+.stamp .gl { font-size: 38px; line-height: 1; margin-top: 2px; }
+.stamp .gm { position: absolute; top: 9px; right: 9px; font-size: 17px; line-height: 1; }
+.stamp-big { width: 92px; height: 92px; border-width: 4px; }
+.stamp-big .gl { font-size: 58px; }
+.stamp-big .gm { top: 13px; right: 13px; font-size: 25px; }
+.ga { --c: var(--ga); } .gb { --c: var(--gb); } .gc { --c: var(--gc); } .gd { --c: var(--gd); } .gf { --c: var(--gf); }
+.mid .stamp { width: 56px; height: 56px; }
+.mid .stamp .gl { font-size: 33px; }
+.mid .stamp .gm { top: 8px; right: 8px; font-size: 15px; }
+
+/* sections */
+section { padding-block: 64px 4px; }
+.sec-h { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin-bottom: 26px; }
+.sec-h h2 { font-size: clamp(32px, 5vw, 54px); font-weight: 900; }
+.sec-h p { color: var(--muted); font-size: 14px; max-width: 64ch; }
+.sub-h { font-size: 24px; font-weight: 800; margin: 0 0 14px; }
+.sub-h span { font-family: var(--mono); font-size: 12px; font-weight: 400; letter-spacing: .06em; color: var(--muted); margin-left: 8px; }
+.two { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 44px; align-items: start; }
+.prose p + p { margin-top: 14px; }
+.prose.wide { max-width: 72ch; }
+.prose.wide, .blurb { margin-top: 0; }
+.lead { font-size: 16px; line-height: 1.65; }
+.blurb { max-width: 80ch; font-size: 16px; margin-bottom: 26px; }
+
+/* stat duel */
+.tape { display: grid; gap: 15px; }
+.trow { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 14px; align-items: center; }
+.tl span { display: block; font-size: 13.5px; font-weight: 500; line-height: 1.25; }
+.tl em { font-style: normal; font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+.bars { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+.bar { position: relative; height: 30px; background: var(--surface); display: flex; align-items: center; }
+.bar i { position: absolute; top: 0; bottom: 0; opacity: .85; }
+.bar.left { flex-direction: row-reverse; justify-content: flex-start; }
+.bar.left i { right: 0; background: var(--unc); }
+.bar.right i { left: 0; background: var(--mia); }
+.bar b { position: relative; z-index: 1; font-family: var(--display); font-size: 21px; font-weight: 800; padding: 0 10px; color: var(--fg); text-shadow: 0 0 6px var(--bg); }
+.legend { display: flex; justify-content: space-between; margin-top: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+.legend .u { color: var(--unc); } .legend .m { color: var(--mia); }
+
+/* flow chart */
+.flow-h { margin-top: 48px; }
+.cardbox { background: var(--surface); padding: 20px 18px 14px; }
+.flowwrap { position: relative; }
+.flowwrap svg { width: 100%; height: auto; display: block; }
+.gl { stroke: var(--line); stroke-width: 1; }
+.vl { stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 5; }
+.zero { stroke: var(--muted); stroke-width: 1.2; }
+.gt { fill: var(--muted); font-family: var(--mono); font-size: 11px; }
+.ar-u { fill: var(--unc); fill-opacity: .38; stroke: none; }
+.ar-m { fill: var(--mia); fill-opacity: .38; stroke: none; }
+.ln { fill: none; stroke: var(--fg); stroke-width: 2.2; stroke-linejoin: round; }
+.dot-u { fill: var(--unc); stroke: var(--surface); stroke-width: 2; }
+.dot-m { fill: var(--mia); stroke: var(--surface); stroke-width: 2; }
+.hit { fill: transparent; cursor: pointer; }
+.fum { stroke: var(--gf); stroke-width: 1.6; stroke-dasharray: 5 4; }
+.al { fill: var(--muted); font-family: var(--mono); font-size: 11px; letter-spacing: .04em; }
+.al-u { fill: var(--unc); } .al-m { fill: var(--mia); }
+.tip { position: absolute; z-index: 5; pointer-events: none; background: var(--bg); border: 1px solid var(--line); padding: 8px 11px; font-size: 13px; line-height: 1.4; max-width: 230px; transform: translate(-50%, calc(-100% - 14px)); box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+.tip b { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; display: block; }
+.tip .s { font-family: var(--display); font-weight: 800; font-size: 20px; }
+.cap { font-size: 12.5px; color: var(--muted); padding-top: 6px; }
+
+/* quarters */
+.qgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 22px; }
+.qc { background: var(--surface); padding: 20px 22px 22px; border-top: 3px solid var(--line); }
+.qh { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+.qn { font-family: var(--display); font-weight: 900; font-size: 30px; letter-spacing: .04em; }
+.qs { display: flex; gap: 14px; font-family: var(--display); font-weight: 800; font-size: 22px; text-transform: uppercase; }
+.tu { color: var(--unc); } .tmi { color: var(--mia); }
+.qc p { font-size: 16px; }
+.turn { margin-top: 16px; background: var(--surface); border-left: 4px solid var(--gf); padding: 22px 26px; }
+.turn-k { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--gf); margin-bottom: 8px; }
+.turn p { font-size: 16px; max-width: 80ch; }
+.turn blockquote { margin: 16px 0 0; padding: 0; font-family: var(--display); font-weight: 700; font-size: clamp(20px, 2.4vw, 28px); line-height: 1.15; text-transform: none; letter-spacing: .01em; color: var(--muted); max-width: 60ch; }
+.turn blockquote::before { content: ""; }
+.tline { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid var(--line); }
+.tline li { display: grid; grid-template-columns: 100px 52px minmax(0, 1fr) auto; gap: 14px; align-items: baseline; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 16px; }
+.tc { font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+.tm { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.tline li.u .tm { color: var(--unc); } .tline li.m .tm { color: var(--mia); }
+.ts { font-family: var(--display); font-weight: 800; font-size: 20px; font-variant-numeric: tabular-nums; }
+
+/* right / wrong cards */
+.cgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 16px; }
+.cd { background: var(--surface); padding: 20px 22px 22px; border-top: 3px solid; }
+.cd.good { border-top-color: var(--ga); } .cd.bad { border-top-color: var(--gf); }
+.cd h3 { font-size: 23px; font-weight: 800; margin-bottom: 10px; line-height: 1.05; }
+.cd p { font-size: 16px; }
+
+/* position cards */
+.pgrid { display: grid; gap: 16px; }
+.pos { background: var(--surface); padding: 22px clamp(16px, 2.6vw, 30px) 24px; border-left: 4px solid var(--c); display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 8px 34px; align-items: start; }
+.ph { display: flex; gap: 16px; align-items: flex-start; }
+.ph > div { min-width: 0; }
+.ph h3 { font-size: 26px; font-weight: 900; line-height: 1; overflow-wrap: anywhere; }
+.pi { font-family: var(--mono); font-size: 12px; line-height: 1.5; color: var(--muted); margin-top: 8px; }
+.pb p + p { margin-top: 12px; }
+.pb p { font-size: 16px; max-width: 78ch; }
+
+/* preview table */
+.tw { overflow-x: auto; margin-bottom: 26px; }
+.pv { border-collapse: collapse; width: 100%; font-size: 16px; background: var(--surface); }
+.pv th, .pv td { text-align: left; padding: 11px 16px; border-top: 1px solid var(--line); vertical-align: top; }
+.pv thead th { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border-top: 0; }
+.pv tbody th { font-weight: 500; min-width: 210px; }
+.chip-r { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: .05em; text-transform: uppercase; border: 1px solid; padding: 1px 8px; white-space: nowrap; }
+.chip-r.ok { color: var(--ga); } .chip-r.no { color: var(--gf); } .chip-r.mid { color: var(--gc); }
+
+/* snap counts */
+.snap { display: grid; gap: 18px; }
+.sg h4 { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .12em; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; }
+.sr { display: grid; grid-template-columns: 190px minmax(0, 1fr) 78px; gap: 12px; align-items: center; padding: 3px 0; font-size: 16px; }
+.sn { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sb { height: 12px; background: var(--surface); display: block; }
+.sb i { display: block; height: 100%; background: var(--unc); }
+.snap.def .sb i { background: color-mix(in srgb, var(--unc) 65%, var(--mia)); }
+.sv { font-family: var(--mono); font-size: 12.5px; text-align: right; font-variant-numeric: tabular-nums; }
+.sv em { font-style: normal; color: var(--muted); margin-left: 4px; }
+.snaps { gap: 54px; }
+.notes { margin-top: 34px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 44px; }
+.notes p { font-size: 16px; }
+
+/* report card */
+.gtop { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 34px; align-items: center; margin-bottom: 34px; }
+.gt-big { display: flex; gap: 20px; align-items: center; background: var(--surface); padding: 22px 24px; }
+.gt-big b { display: block; font-family: var(--display); font-size: 34px; text-transform: uppercase; font-weight: 900; line-height: 1; }
+.gt-big > div span { display: block; font-size: 16px; color: var(--muted); margin-top: 6px; line-height: 1.45; }
+.gtop .blurb { margin: 0; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-bottom: 28px; }
+.tiles.two-t { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.tile { background: var(--surface); padding: 16px 18px 18px; display: grid; gap: 10px; align-content: start; }
+.tt { font-family: var(--display); font-weight: 800; font-size: 19px; text-transform: uppercase; letter-spacing: .03em; }
+.tile p { font-size: 16px; line-height: 1.5; color: var(--muted); }
+.balls { margin-top: 8px; max-width: 80ch; font-size: 16px; padding-top: 18px; border-top: 1px solid var(--line); }
+
+footer { padding-block: 56px 80px; }
+.note { font-size: 13px; color: var(--muted); max-width: 80ch; }
+
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes stampin { from { transform: rotate(-5deg) scale(1.6); opacity: 0; } to { transform: rotate(-5deg) scale(1); opacity: 1; } }
+
+@media (max-width: 900px) {
+  .two, .gtop { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .snaps { gap: 34px; }
+  .pos { grid-template-columns: minmax(0, 1fr); }
+  .qgrid, .notes { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 680px) {
+  .scoreboard { grid-template-columns: minmax(0, 1fr); }
+  .team.mia { text-align: left; align-items: flex-start; }
+  .mid { border-inline: 0; border-block: 1px solid var(--line); }
+  .trow { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .tline li { grid-template-columns: 76px 40px minmax(0, 1fr) auto; gap: 8px; font-size: 16px; }
+  .sr { grid-template-columns: 118px minmax(0, 1fr) 70px; gap: 8px; }
+  .sn { white-space: normal; line-height: 1.2; }
+  section { padding-top: 48px; }
+  .num { font-size: 96px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .scoreboard, .stamp { animation: none; }
+}
+[hidden] { display: none !important; }
+
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap navin">
+  <span class="brand">UNC / MIA</span>
+  <nav aria-label="Sections"><a href="#story">The game</a><a href="#right">What worked</a><a href="#wrong">What broke</a><a href="#offense">Offense</a><a href="#defense">Defense</a><a href="#special">Special teams</a><a href="#preview">My preview</a><a href="#snaps">Snap counts</a><a href="#grades">Report card</a><a href="#next">Next</a></nav>
+</div><div class="prog" aria-hidden="true"><i id="prog"></i></div></header>
+
+<main>
+<div class="wrap hero">
+  <div class="kicker"><span>Final</span><span>Sat. Oct. 31, 2026</span><span>Kenan Stadium, Chapel Hill</span><span>ABC</span></div>
+  <div class="scoreboard">
+    <div class="team unc">
+      <span class="rank">Home &middot; ACC 2-3</span>
+      <h1>North Carolina</h1>
+      <div class="num" aria-label="35">35</div>
+      <div class="meta">4-4 &middot; second straight loss by a one-score margin</div>
+    </div>
+    <div class="mid">
+      <span class="final">Final</span>
+      <table class="ls" aria-label="Score by quarter">
+        <thead><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>T</th></tr></thead>
+        <tbody>
+          <tr class="u"><th scope="row">UNC</th><td>0</td><td>14</td><td>7</td><td>14</td><td class="t">35</td></tr>
+          <tr class="m"><th scope="row">MIA</th><td>7</td><td>10</td><td>7</td><td>14</td><td class="t">38</td></tr>
+        </tbody>
+      </table>
+      <div class="tg"><span>Team grade</span><span class="stamp ga stamp-big" aria-label="Grade A"><span class="gl">A</span></span></div>
+    </div>
+    <div class="team mia">
+      <span class="rank">No. 1 AP &middot; ACC 6-0</span>
+      <h1>Miami</h1>
+      <div class="num" aria-label="38">38</div>
+      <div class="meta">8-0 &middot; at No. 5 Notre Dame next</div>
+    </div>
+  </div>
+</div>
+
+<section id="story"><div class="wrap">
+  <div class="sec-h"><h2>The game</h2><p>A postgame breakdown from North Carolina's side.</p></div>
+  <div class="two">
+    <div class="prose lede">
+      <p class="lead">Carolina lost 38-35 to No. 1 Miami at Kenan on Halloween night, and the box score says it was a coin flip. UNC had 407 yards to Miami's 416, 27 first downs to 25, 64 plays to 62, 6.4 yards a play to 6.7 and 30:51 of possession to 29:09. The line that doesn't match is turnovers: Miami had none and UNC had one. It came with 5:33 left and UNC down 31-28, when Marquise Lightfoot knocked the ball out of Billy Edwards Jr.'s hand from behind and Justin Scott fell on it at the UNC 37. Six plays later Darian Mensah hit Malachi Toney for a 9-yard touchdown, and a three-point game was a ten-point game with 2:33 to go.</p>
+      <p>Before the game I said UNC could beat Miami if it won the possession battle, converted on third and fourth down and didn't turn the ball over. It did the first two well. It had the ball for almost two more minutes than Miami, went 8 for 11 on third down and 2 for 2 on fourth. Then it did the third thing wrong, once, at the worst possible time. I picked UNC 34-31. The 35 was within a point of my number. Miami's 38 was seven more than I gave it, and that gap lives on the defensive side.</p>
+      <p>Edwards played his best game of the season: 28 of 34 for 341 yards and four touchdowns, no interceptions, nine different receivers. Jelani Thurman caught two touchdowns, Jordan Shipp and Trech Kekahuna one each, and Demon June ran one in. Every one of those five touchdown drives covered at least 75 yards. That offense is not the reason Carolina is 4-4. The defense held Miami about 136 yards under its season average and still gave up 38 points. Miami scored on six of its seven real possessions, the one stop was a punt on its second drive, and the Heels got one sack and one quarterback hit against Mensah all night. The pass rush was the part of the plan I was most sure about going in, and it didn't show up.</p>
+      <p>What follows is the full breakdown: how the game went, what worked, what didn't, every position group with snap counts and a grade, and where this leaves the season.</p>
+    </div>
+    <div>
+      <h3 class="sub-h">The stat sheet was a push</h3>
+      <div class="tape"><div class="trow"><div class="tl"><span>Total yards</span></div><div class="bars"><div class="bar left"><i style="width:97.8%"></i><b>407</b></div><div class="bar right"><i style="width:100.0%"></i><b>416</b></div></div></div><div class="trow"><div class="tl"><span>Passing yards</span></div><div class="bars"><div class="bar left"><i style="width:100.0%"></i><b>341</b></div><div class="bar right"><i style="width:80.4%"></i><b>274</b></div></div></div><div class="trow"><div class="tl"><span>Rushing yards</span></div><div class="bars"><div class="bar left"><i style="width:46.5%"></i><b>66</b></div><div class="bar right"><i style="width:100.0%"></i><b>142</b></div></div></div><div class="trow"><div class="tl"><span>First downs</span></div><div class="bars"><div class="bar left"><i style="width:100.0%"></i><b>27</b></div><div class="bar right"><i style="width:92.6%"></i><b>25</b></div></div></div><div class="trow"><div class="tl"><span>Time of possession</span></div><div class="bars"><div class="bar left"><i style="width:100.0%"></i><b>30:51</b></div><div class="bar right"><i style="width:94.5%"></i><b>29:09</b></div></div></div><div class="trow"><div class="tl"><span>Penalty yards</span><em>lower is better</em></div><div class="bars"><div class="bar left"><i style="width:100.0%"></i><b>37</b></div><div class="bar right"><i style="width:81.1%"></i><b>30</b></div></div></div><div class="trow"><div class="tl"><span>Sacks taken</span><em>lower is better</em></div><div class="bars"><div class="bar left"><i style="width:100.0%"></i><b>4</b></div><div class="bar right"><i style="width:25.0%"></i><b>1</b></div></div></div><div class="trow"><div class="tl"><span>Turnovers</span><em>lower is better</em></div><div class="bars"><div class="bar left"><i style="width:100.0%"></i><b>1</b></div><div class="bar right"><i style="width:0.0%"></i><b>0</b></div></div></div></div>
+      <div class="legend"><span class="u">North Carolina</span><span class="m">Miami</span></div>
+    </div>
+  </div>
+
+  <h3 class="sub-h flow-h">How the lead moved</h3>
+  <div class="cardbox">
+    <div class="flowwrap" id="flowwrap"><svg viewBox="0 0 820 330" role="img" aria-label="Score margin through the game. Miami led 7-0, UNC tied it, Miami led 14-7, it was tied at 14, Miami led 17-14 at the half, UNC led 21-17 in the third, then 28-24 in the fourth. Miami scored 38-28 after the strip-sack and UNC cut it to 38-35." id="flow"><defs><clipPath id="cu"><rect x="58" y="26" width="738" height="104.0"/></clipPath><clipPath id="cm"><rect x="58" y="130.0" width="738" height="156.0"/></clipPath></defs><line x1="58" x2="796" y1="260.0" y2="260.0" class="gl"/><text x="50" y="264.0" class="gt" text-anchor="end">−10</text><line x1="58" x2="796" y1="195.0" y2="195.0" class="gl"/><text x="50" y="199.0" class="gt" text-anchor="end">−5</text><line x1="58" x2="796" y1="130.0" y2="130.0" class="zero"/><text x="50" y="134.0" class="gt" text-anchor="end">0</text><line x1="58" x2="796" y1="65.0" y2="65.0" class="gl"/><text x="50" y="69.0" class="gt" text-anchor="end">+5</text><line x1="58.0" x2="58.0" y1="26" y2="286" class="vl"/><text x="58.0" y="312" class="gt" text-anchor="middle">Kickoff</text><line x1="242.5" x2="242.5" y1="26" y2="286" class="vl"/><text x="242.5" y="312" class="gt" text-anchor="middle">End Q1</text><line x1="427.0" x2="427.0" y1="26" y2="286" class="vl"/><text x="427.0" y="312" class="gt" text-anchor="middle">Half</text><line x1="611.5" x2="611.5" y1="26" y2="286" class="vl"/><text x="611.5" y="312" class="gt" text-anchor="middle">End Q3</text><line x1="796.0" x2="796.0" y1="26" y2="286" class="vl"/><text x="796.0" y="312" class="gt" text-anchor="middle">Final</text><path d="M58.0,130.0 L135.9,130.0 L135.9,221.0 L280.6,221.0 L280.6,130.0 L330.9,130.0 L330.9,221.0 L402.4,221.0 L402.4,130.0 L421.9,130.0 L421.9,169.0 L476.4,169.0 L476.4,78.0 L546.1,78.0 L546.1,169.0 L650.0,169.0 L650.0,78.0 L699.2,78.0 L699.2,169.0 L763.8,169.0 L763.8,260.0 L775.1,260.0 L775.1,169.0 L796.0,169.0 L796.0,130.0 L58.0,130.0 Z" class="ar-u" clip-path="url(#cu)"/><path d="M58.0,130.0 L135.9,130.0 L135.9,221.0 L280.6,221.0 L280.6,130.0 L330.9,130.0 L330.9,221.0 L402.4,221.0 L402.4,130.0 L421.9,130.0 L421.9,169.0 L476.4,169.0 L476.4,78.0 L546.1,78.0 L546.1,169.0 L650.0,169.0 L650.0,78.0 L699.2,78.0 L699.2,169.0 L763.8,169.0 L763.8,260.0 L775.1,260.0 L775.1,169.0 L796.0,169.0 L796.0,130.0 L58.0,130.0 Z" class="ar-m" clip-path="url(#cm)"/><path d="M58.0,130.0 L135.9,130.0 L135.9,221.0 L280.6,221.0 L280.6,130.0 L330.9,130.0 L330.9,221.0 L402.4,221.0 L402.4,130.0 L421.9,130.0 L421.9,169.0 L476.4,169.0 L476.4,78.0 L546.1,78.0 L546.1,169.0 L650.0,169.0 L650.0,78.0 L699.2,78.0 L699.2,169.0 L763.8,169.0 L763.8,260.0 L775.1,260.0 L775.1,169.0 L796.0,169.0" class="ln"/><line x1="727.7" x2="727.7" y1="26" y2="286" class="fum"/><text x="721.7" y="38" class="al" text-anchor="end">Strip-sack, 5:33 left</text><text x="66.0" y="39.0" class="al al-u">UNC leads</text><text x="66.0" y="273.0" class="al al-m">Miami leads</text><circle cx="135.9" cy="221.0" r="5" class="dot-m"/><circle cx="135.9" cy="221.0" r="16" class="hit" data-i="0"/><circle cx="280.6" cy="130.0" r="5" class="dot-u"/><circle cx="280.6" cy="130.0" r="16" class="hit" data-i="1"/><circle cx="330.9" cy="221.0" r="5" class="dot-m"/><circle cx="330.9" cy="221.0" r="16" class="hit" data-i="2"/><circle cx="402.4" cy="130.0" r="5" class="dot-u"/><circle cx="402.4" cy="130.0" r="16" class="hit" data-i="3"/><circle cx="421.9" cy="169.0" r="5" class="dot-m"/><circle cx="421.9" cy="169.0" r="16" class="hit" data-i="4"/><circle cx="476.4" cy="78.0" r="5" class="dot-u"/><circle cx="476.4" cy="78.0" r="16" class="hit" data-i="5"/><circle cx="546.1" cy="169.0" r="5" class="dot-m"/><circle cx="546.1" cy="169.0" r="16" class="hit" data-i="6"/><circle cx="650.0" cy="78.0" r="5" class="dot-u"/><circle cx="650.0" cy="78.0" r="16" class="hit" data-i="7"/><circle cx="699.2" cy="169.0" r="5" class="dot-m"/><circle cx="699.2" cy="169.0" r="16" class="hit" data-i="8"/><circle cx="763.8" cy="260.0" r="5" class="dot-m"/><circle cx="763.8" cy="260.0" r="16" class="hit" data-i="9"/><circle cx="775.1" cy="169.0" r="5" class="dot-u"/><circle cx="775.1" cy="169.0" r="16" class="hit" data-i="10"/></svg><div class="tip" id="tip" role="status" hidden></div></div>
+    <p class="cap">Score margin by game clock. Blue is UNC ahead, orange is Miami ahead. UNC led twice, for 5:40 and 4:00 of game time. Tap or hover a dot for the score.</p>
+  </div>
+
+  <div class="qgrid"><article class="qc"><div class="qh"><span class="qn">Q1</span><span class="qs"><b class="tmi">Miami 7</b><b class="tu">UNC 0</b></span></div><p>Miami took the opening drive 13 plays and 74 yards, and Mensah finished it with a blind, over-the-shoulder 2-yard touchdown to Toney at 8:40. UNC's first possession got past midfield, then Edwards was sacked on third down and went down long enough that the trainers came out. He stayed in, and the punt (28 yards, the only one UNC would have all night) went out. Miami's second drive ran into real pressure and ended in a punt of its own. That was the only stop the UNC defense got in the game, and it came early.</p></article><article class="qc"><div class="qh"><span class="qn">Q2</span><span class="qs"><b class="tu">UNC 14</b><b class="tmi">Miami 10</b></span></div><p>Everything good about the offense showed up here. Edwards missed his first two throws of the night, then completed nine in a row for 95 yards, and an 11-play, 84-yard drive ended with an 8-yard run-pass option touchdown to Thurman. Miami's answer was the kind that makes you wince because of how easy it looked: out of a diamond formation Mensah threw a quick one to Mark Fletcher Jr., who took it 31 yards down the sideline, 14-7. UNC came back with a 12-play, 75-yard drive and a second Thurman touchdown, an 8-yarder on third-and-goal, to tie it at 14 with 2:00 left. Miami used that two minutes to get to the UNC 7, failed on third-and-goal and settled for a 25-yard Jake Weinberg field goal with 25 seconds on the clock. 17-14 Miami at the half. The 14 first-half points were the most Miami had allowed in a half all season.</p></article><article class="qc"><div class="qh"><span class="qn">Q3</span><span class="qs"><b class="tmi">Miami 7</b><b class="tu">UNC 7</b></span></div><p>UNC got the ball to start the half and took the lead on its first possession: eight plays, 75 yards, Edwards rolling right and finding Shipp from 16 yards out. 21-17 at 10:59, the first UNC lead of the night. Miami answered with an 80-yard drive that hinged on one flag. On third down in the red zone Jaiden Patterson was called for pass interference on Toney in the end zone, a call Bill Belichick didn't like, and Fletcher scored from the 2 on the next play, upheld on review as breaking the plane. 24-21 Miami with 5:19 left in the quarter.</p></article><article class="qc"><div class="qh"><span class="qn">Q4</span><span class="qs"><b class="tu">UNC 14</b><b class="tmi">Miami 14</b></span></div><p>The next UNC drive was the best of the night: 16 plays, 75 yards, 8:27 off the clock, running across the quarter break. A holding call on Andrew Threatt took away a 12-yard Benjamin Hall touchdown run in the middle of it, and UNC went and got the points anyway. June finished it from a yard out and UNC led 28-24 with just under 12 minutes left. Miami needed 3:55 to take it back. Toney had a 31-yard catch-and-run, and on fourth-and-1 from the 2 Cristobal went for it instead of kicking. He scored. 31-28 Miami, 7:49 to go.</p></article></div>
+  <div class="turn">
+    <div class="turn-k">The play that decided it</div>
+    <p>Then the play that decided it. UNC had the ball for about two minutes. Edwards stepped up to throw, Lightfoot got him from behind, the ball came out, and Scott recovered at the UNC 37 with 5:33 left. Elija Lofton made a leaping catch over a would-be tackler to move the chains and Mensah hit Toney on a 9-yard slant for 38-28 with 2:33 left. Edwards then drove UNC 75 yards in five plays in less than a minute, finishing with a 15-yard touchdown to Kekahuna with 1:38 on the clock. UNC needed the ball back and kicked onside. Coleman Bryson came up with the first attempt and a flag for offside took it back. He recovered the second one and Peyton Seelmann was flagged for making contact before the kick went 10 yards. Miami recovered the third and kneeled it out.</p>
+    <blockquote>Belichick on the fumble: &quot;The protection was good, but you know, we just end up holding the ball too long.&quot; On the night: &quot;Really proud of our effort tonight, but unfortunately, came up a little bit short.&quot;</blockquote>
+  </div>
+
+  <h3 class="sub-h">Every score</h3>
+  <ol class="tline"><li class="m"><span class="tc">Q1 8:40</span><span class="tm">Miami</span><span class="td">Toney 2-yard pass from Mensah</span><span class="ts">0-7</span></li><li class="u"><span class="tc">Q2 11:54</span><span class="tm">UNC</span><span class="td">Thurman 8-yard pass from Edwards</span><span class="ts">7-7</span></li><li class="m"><span class="tc">Q2 7:49</span><span class="tm">Miami</span><span class="td">Fletcher 31-yard pass from Mensah</span><span class="ts">7-14</span></li><li class="u"><span class="tc">Q2 2:00</span><span class="tm">UNC</span><span class="td">Thurman 8-yard pass from Edwards</span><span class="ts">14-14</span></li><li class="m"><span class="tc">Q2 0:25</span><span class="tm">Miami</span><span class="td">Weinberg 25-yard field goal</span><span class="ts">14-17</span></li><li class="u"><span class="tc">Q3 10:59</span><span class="tm">UNC</span><span class="td">Shipp 16-yard pass from Edwards</span><span class="ts">21-17</span></li><li class="m"><span class="tc">Q3 5:19</span><span class="tm">Miami</span><span class="td">Fletcher 2-yard run</span><span class="ts">21-24</span></li><li class="u"><span class="tc">Q4 11:52</span><span class="tm">UNC</span><span class="td">June 1-yard run</span><span class="ts">28-24</span></li><li class="m"><span class="tc">Q4 7:52</span><span class="tm">Miami</span><span class="td">Fletcher 2-yard run, 4th-and-1</span><span class="ts">28-31</span></li><li class="m"><span class="tc">Q4 2:37</span><span class="tm">Miami</span><span class="td">Toney 9-yard pass from Mensah</span><span class="ts">28-38</span></li><li class="u"><span class="tc">Q4 1:42</span><span class="tm">UNC</span><span class="td">Kekahuna 15-yard pass from Edwards</span><span class="ts">35-38</span></li></ol>
+</div></section>
+
+<section id="right"><div class="wrap">
+  <div class="sec-h"><h2>What went right</h2><p>The offense did its job. Seven things that worked.</p></div>
+  <div class="cgrid"><article class="cd good"><h3>Edwards was efficient, and on time until one play</h3><p>He went 28 of 34, 82.4 percent, on 10.0 yards an attempt, and the completions, the percentage and the yards were all season highs for him. He started 0 for 2 and then completed nine straight. Nine different receivers caught a pass, and the longest completion of the night was only 28 yards, so this wasn't a few big plays dressed up as a big day. It was 28 completions at 12.2 yards a catch, and no interceptions after a season in which he'd thrown five in seven games. He's now 149 of 235 for 1,872 yards, 15 touchdowns and 5 picks.</p></article><article class="cd good"><h3>The drives were long and they finished</h3><p>UNC went 8 for 11 on third down and 2 for 2 on fourth. Its five touchdown drives went 84, 75, 75, 75 and 75 yards, and they took 52 of UNC's 64 plays (11, 12, 8, 16 and 5). That is a team that never got a short field because Miami never turned it over, and still marched the full 75 five times against the best team in the country. The 16-play, 8:27 drive that gave UNC a 28-24 lead is the one I'd show anybody who asks what Belichick wants this offense to look like: clock down, field gone, a touchdown at the end.</p></article><article class="cd good"><h3>The tight end plan worked</h3><p>I said in the preview that the tight end seams and screens were the way into Miami's blitz-heavy early downs, and that is exactly where the points came from. Jelani Thurman was on the field for 65 of 67 snaps and caught five passes for 70 yards and two touchdowns. UNC's tight ends took 96 snaps combined, an average of 1.43 per play, which tells me roughly four of every ten snaps were two-tight-end looks. Miami's defense had no good answer for a 6-6 target in space.</p></article><article class="cd good"><h3>Miami&#x27;s offense was held below what it usually is</h3><p>Miami came in averaging 49.0 points, 551.9 yards, 340.7 passing and 211.1 rushing. It got 38, 416, 274 and 142. Toney, who was averaging 136 receiving yards a game, finished with 7 catches for 75. Mensah completed 76 percent of his throws against his season mark of 81.4, and Miami finished 11 points under its scoring average. That counts for something, and it also shows the problem: this is what holding Miami down looks like, and it was still 38.</p></article><article class="cd good"><h3>It was UNC&#x27;s best offensive day against an FBS team this year</h3><p>The Heels hadn't scored more than 24 in regulation against an FBS opponent all season, and 35 is 11 more than that. Edwards's 341 yards were the most Miami's defense has given up this year, and the 35 points were the most it has allowed in regulation. The ceiling on this offense is higher than the first seven games suggested.</p></article><article class="cd good"><h3>The injury picture got better</h3><p>A week ago Kaleb Cost, Benjamin Hall and Peyton Waters were listed probable on Friday, did not play against Syracuse, and that was a big part of the week. This week Cost played 45 snaps at nickel and Hall was back for 14 snaps at running back. Jordan Hall, listed questionable on Wednesday's report, took all 67 snaps at left tackle, and Andrew Threatt, also questionable, played 63. Melkart Abou Jaoude played 53. Waters is the one who didn't come back, and the secondary still gave a competitive game against one of the best passing offenses in the country.</p></article><article class="cd good"><h3>It never looked like a team that expected to lose</h3><p>UNC is 0-12 all-time against No. 1-ranked opponents, and it trailed by ten with 2:33 to go and still got a score in under a minute and three shots at an onside kick. Edwards after the game: "This isn't the business for moral victories." I agree with him. The effort part is not what I'm grading here.</p></article></div>
+</div></section>
+
+<section id="wrong"><div class="wrap">
+  <div class="sec-h"><h2>What went wrong</h2><p>One play, a missing pass rush and a run of flags.</p></div>
+  <div class="cgrid"><article class="cd bad"><h3>The fumble</h3><p>It was second down, UNC trailing 31-28 and about two minutes into its possession. Edwards stepped up in the pocket, Lightfoot got him from behind, the ball came out, and Scott had it at the UNC 37 with 5:33 left. It was the only turnover of the game on either side. Miami went 37 yards in six plays for the touchdown that made it 38-28, and UNC's offense then went 75 yards in under a minute, which tells me the points were there for the taking on the other end. Without that fumble UNC probably gets the ball back with a chance to tie or lead. Belichick said they could have executed the play better and that they ended up holding the ball too long. Lightfoot finished with two sacks and seven tackles. This is the one play I'd take back.</p></article><article class="cd bad"><h3>The pass rush didn&#x27;t exist</h3><p>I leaned hard on this in the preview. Max Buchanan was out at right guard, Miami's line had looked exposed against Wake Forest and Florida State, and I wanted Abou Jaoude and Xavier Lewis working stunts inside. The official numbers for the whole defense were one sack, by linebacker Peyton Seelmann, and one quarterback hit. Mensah went 22 of 29 and ran for another 36 yards. Abou Jaoude played 53 snaps, Jaylen Harvey 44 and Donovan Hoilette 22, and I can't find a sack or a hit from any of them in the stats. Miami's receivers got to play in space against zone coverage and Mensah got to wait.</p></article><article class="cd bad"><h3>Miami scored on six of seven possessions</h3><p>The one stop was a punt on Miami's second drive. Everything else was a touchdown or a field goal, and the last three full Miami possessions were all touchdowns: the 80-yard drive with the interference call, the 4th-and-1 touchdown that took the lead right back after UNC went up 28-24, and the six-play drive off the fumble. When UNC finally got a lead it could have defended, the defense gave up two touchdown drives in about nine minutes.</p></article><article class="cd bad"><h3>The goal line</h3><p>Miami scored from inside the 3 three times, on the 2-yard Toney catch in the first quarter and Fletcher's 2-yarders in the third and fourth, and UNC didn't stop any of them. The one time UNC held near the goal line was before the half, when Miami reached the 7, missed on third-and-goal and kicked a field goal. The fourth-and-1 was the big one. Cristobal went for it and UNC couldn't hold a yard.</p></article><article class="cd bad"><h3>The flags came at the worst times</h3><p>UNC was called six times for 37 yards and Miami three for 30. In the preview I circled Miami's 62.9 penalty yards a game as a UNC advantage, and that one went the wrong way. Four flags mattered more than the rest. Andrew Threatt's holding took a 12-yard Benjamin Hall touchdown run off the board. Patterson's pass interference in the end zone put the ball at the 2, and Fletcher scored on the next snap, a call Belichick protested. And the last two were on the onside kicks: UNC recovered the first and was flagged for offside, recovered the second and Seelmann hit a Miami player before the ball had gone 10 yards. Seelmann said he assumed the ball was in place. UNC was down three, a field goal from tying it, with the ball back twice, and neither one stood.</p></article><article class="cd bad"><h3>The run game</h3><p>UNC averaged 114 rushing yards a game coming in and finished with 66 on 30 attempts, 2.2 a carry, with a long of 12. If the official 66 includes the 22 yards lost on sacks, which is how the NCAA keeps the books, the designed runs were closer to 26 for 88 and 3.4 a carry, which is still not what you want. June had 13 carries for 44 yards and the touchdown. The offense didn't need the run to score, but a team trying to shorten a fourth-quarter game needs it, and UNC never had that option.</p></article><article class="cd bad"><h3>No takeaways</h3><p>The UNC defense forced no interceptions and no fumbles. Greg Smith came in with three interceptions this year and didn't get one against Mensah. Against an offense this good you don't get many chances to flip a game, and UNC got zero.</p></article><article class="cd bad"><h3>Sacks allowed</h3><p>Four sacks for 22 yards and six hits in all against 38 dropbacks is a 10.5 percent sack rate. Edwards took 11 sacks in the first five games, and in the preview I said the danger was Miami's front turning a sack into a short field. That is more or less what happened on the play that decided the game.</p></article></div>
+</div></section>
+
+<section id="offense"><div class="wrap">
+  <div class="sec-h"><h2>Offense</h2><p>Grades by position group, with snap counts.</p></div>
+  <p class="blurb">UNC scored 35 points on 407 yards and 6.4 yards a play, with 341 through the air and 66 on the ground. It went 8 for 11 on third down, 2 for 2 on fourth, took 27 first downs, and turned it over once. The offense took 67 snaps (the official play count is 64, so the three-snap gap is most likely plays nullified by penalty). I'd call it a B+ or A- unit overall, and almost everything good came through the air.</p>
+  <div class="pgrid"><article class="pos ga"><div class="ph"><span class="stamp ga" aria-label="Grade A"><span class="gl">A</span></span><div><h3>Quarterback</h3><p class="pi">Billy Edwards Jr., 67 snaps</p></div></div><div class="pb"><p>Edwards is the headline. He went 28 of 34 for 341 yards and four touchdowns with no interceptions, and he did it after a first drive that ended with him sacked on third down and the trainers coming out to look at him. After missing his first two throws he completed nine straight, and the first touchdown came on that 11-play, 84-yard drive, an 8-yard run-pass option to Thurman. The touchdowns were varied: the two 8-yarders to Thurman, a rollout to Shipp for 16, and a 15-yarder to Kekahuna that finished a five-play, 75-yard drive in less than a minute with the game on the line. He threw to nine different receivers. Belichick called the night "solid," and said Edwards reads the coverage and throws to the open man. Edwards himself said "we did some good things, but we didn't do enough to win."</p><p>The knock is the fumble, and I don't want to bury it. He took four sacks on the night, and the one that cost the game was partly on him by Belichick's own account: they held it too long. It keeps this from being a perfect night, but on a night this good it doesn't change the grade. His season line is now 149 of 235 for 1,872 yards, 15 touchdowns and 5 interceptions, and the 82.4 percent completion rate compares with 60.2 percent coming in.</p></div></article><article class="pos gb"><div class="ph"><span class="stamp gb" aria-label="Grade B"><span class="gl">B</span></span><div><h3>Running backs</h3><p class="pi">Demon June 29, Jaylen McGill 27, Benjamin Hall 14, fullback Peter Pesansky 2</p></div></div><div class="pb"><p>The three-man committee never got going on the ground. June carried 13 times for 44 yards and the 1-yard touchdown, which puts his season at 72 carries for 289 yards and eight touchdowns. McGill was more useful as a receiver, with six catches for 69 yards, both career highs, and Hall, back after missing the Syracuse game, had a 12-yard touchdown run taken off the board by Threatt's holding call. The split is the story. June got the most snaps and the goal-line carry, McGill did his work as a receiver, and Hall got 14 snaps in his first game back. Between the three of them there was no run longer than 12 yards, and UNC's 66 rushing yards were 48 below its season average. The grade is a B because the 2.2 isn't all on the backs: it includes 22 yards of sack losses, and the one run that went for a touchdown was erased by a hold. They caught the ball, protected it and found the end zone.</p></div></article><article class="pos gb"><div class="ph"><span class="stamp gb" aria-label="Grade B+"><span class="gl">B</span><span class="gm">+</span></span><div><h3>Wide receivers</h3><p class="pi">Jordan Shipp 67, Nyqir Helton 39, Trech Kekahuna 37, Mason Humphrey 24</p></div></div><div class="pb"><p>Shipp played every snap again and caught the rollout touchdown that gave UNC its first lead. Kekahuna, who plays the slot, caught the 15-yard touchdown that made it a three-point game, and he played 37 snaps, two fewer than Helton, who works at the X. Humphrey got 24 snaps after coming off the injury list. Keeyun Chapman was out, and CJ Sadler and Carnell Warren aren't in the snap counts, so Sadler has now gone two straight weeks without playing offense even though Belichick said last week he wasn't hurt. Beyond the two touchdowns I don't have a clean split of the other receiving yards, so I'm grading the room on the touchdowns and on an offense that went for 341 through the air with nine different catchers. No receiver had a catch longer than 28 yards, so it was a grind-it-out day, not a chunk-play day.</p></div></article><article class="pos ga"><div class="ph"><span class="stamp ga" aria-label="Grade A"><span class="gl">A</span></span><div><h3>Tight ends</h3><p class="pi">Jelani Thurman 65, Jordan Washington 22, Shamar Easter 5, Carson Sneed 4</p></div></div><div class="pb"><p>Thurman was the best offensive player on the field not named Edwards. Five catches for 70 yards and two touchdowns, on the field for 97 percent of the snaps, and both of his touchdowns came on UNC's first two scoring drives, the 84-yarder and the 75-yarder before the half. His season line is 38 catches for 461 yards and six touchdowns. Washington has taken the TE2 job with 22 snaps, and Easter, who ran that 75-yard seam at Pitt, was down to five. Four tight ends combined for 96 snaps, which tells me Belichick was in two-tight-end sets for a good chunk of the game, and that was the right call against a Miami defense that was soft in coverage and missed tackles, as Mario Cristobal admitted afterward.</p></div></article><article class="pos gc"><div class="ph"><span class="stamp gc" aria-label="Grade C+"><span class="gl">C</span><span class="gm">+</span></span><div><h3>Offensive line</h3><p class="pi">Jordan Hall LT 67, Jac&#x27;Qawn McRoy RT 67, Christo Kelly C 67, and Andrew Threatt 63, Cristian Alvarez 55, Aidan Banfield 16 at the guard spots</p></div></div><div class="pb"><p>Three linemen played every snap, and Hall did so after being listed questionable on Wednesday's report. The two guard spots took 134 snaps (2 x 67), and they were split three ways: Threatt 63, Alvarez 55, Banfield 16. Alvarez, the sixth lineman on the depth chart I was working from, ended up with the second-most guard snaps, and Banfield, who was listed as a starter, played the least of the three. The line gave up four sacks for 22 yards and six hits, and Lightfoot alone had two sacks and the forced fumble. It kept Edwards clean on 34 of 38 dropbacks, it was part of eight third-down conversions and five 75-yard touchdown drives, and then it posted 2.2 yards a carry and committed the holding penalty that cost a touchdown. That's a unit that was good enough to win the passing game and not good enough to win the rest. The run blocking is the part I can't give a pass.</p></div></article></div>
+</div></section>
+
+<section id="defense"><div class="wrap">
+  <div class="sec-h"><h2>Defense</h2><p>The run defense held up. The pass rush never showed.</p></div>
+  <p class="blurb">Miami finished with 416 yards, 38 points, 6.7 yards a play, 142 rushing yards at 4.3 a carry and 274 through the air at 9.1 an attempt. Five touchdowns, one field goal, one punt, no turnovers. The defense took 63 snaps, and by the numbers it played the game in a strange middle: it held Miami more than 130 yards under its average and still gave up 38, because it couldn't get off the field when it mattered and couldn't make a play when it needed one. Overall I'd give the unit a C.</p>
+  <div class="pgrid"><article class="pos gb"><div class="ph"><span class="stamp gb" aria-label="Grade B-"><span class="gl">B</span><span class="gm">−</span></span><div><h3>Interior line</h3><p class="pi">Leroy Jackson 51, Xavier Lewis 49, Isaiah Johnson 41, Nicco Maggio 14, Trey Giddens 7</p></div></div><div class="pb"><p>The tackles were the best part of the defense. Miami came in running for 211.1 yards a game and got 142, and Mark Fletcher Jr. had 13 carries for 43 yards. Mensah got another 36 running, which hurt more than Fletcher did. Where the front failed was at the goal line, covered above: Fletcher scored from the 2 twice, and the second one was a fourth-and-1. Jackson and Lewis played about four out of every five snaps and Johnson two-thirds, which is a normal rotation for a four-man front, though I'll add that Lewis, who had six sacks through three games, had none on Saturday. The whole defense had one sack.</p></div></article><article class="pos gd"><div class="ph"><span class="stamp gd" aria-label="Grade D"><span class="gl">D</span></span><div><h3>Edge rushers</h3><p class="pi">Melkart Abou Jaoude 53, Jaylen Harvey 44, Donovan Hoilette Jr. 22</p></div></div><div class="pb"><p>This is the grade I like least writing. Abou Jaoude led the ACC with 10.5 sacks last year, he was on the field for 84 percent of the snaps, and I can't find a single sack or hit from the edge group in the box score. Mensah's night, 22 of 29 with a scramble that went for 36 yards, tells you what happened: he had time and he used it. Miami was missing Buchanan at right guard and its line still got a clean pocket against UNC's best pass rushers. I leaned on this in the preview, and it isn't a small miss. The defense needed the pass rush to bring the game down to something it could survive, and it never did.</p></div></article><article class="pos gb"><div class="ph"><span class="stamp gb" aria-label="Grade B-"><span class="gl">B</span><span class="gm">−</span></span><div><h3>Linebackers</h3><p class="pi">Derek McDonald 63, Peyton Seelmann 48, Timir Hickman-Collins 14, Calvin Thomas 4, Emmanuel Nwaiwu 3</p></div></div><div class="pb"><p>McDonald never left the field and led the team with 11 tackles, the same job he's been doing all year. Seelmann had the only sack of the game and played 48 snaps, and then made the mistake on the second onside kick, hitting a Miami player before the ball had gone 10 yards. A sack and a penalty that cost the team one of its last real chances is a rough ledger. The linebackers took 132 snaps, 2.1 a play, so there were some looks with a third linebacker. Hickman-Collins played 14, and Thomas and Nwaiwu a handful. Jonathan Agumadu, questionable on the report, did not play. The coverage was the problem. Miami got Fletcher free for a 31-yard touchdown on a quick throw out of a diamond formation, and Lofton made a leaping catch that kept the drive after the fumble moving. Cristobal said afterward that Miami found soft spots in zone coverage. I can't tell from the stat sheet whose man either of those was, so I'll put it on the back seven as a group. The linebackers' tackling was fine.</p></div></article><article class="pos gc"><div class="ph"><span class="stamp gc" aria-label="Grade C+"><span class="gl">C</span><span class="gm">+</span></span><div><h3>Cornerbacks</h3><p class="pi">Jaiden Patterson 61, Kenton Dopson III 46, Kaleb Cost 45, Jalon Thompson 2</p></div></div><div class="pb"><p>Dopson had a team-high six solo tackles, and in the preview I said he would be CB2 even though Thompson had played more against Syracuse. It turned out to be a landslide: 46 snaps to 2. Cost was back and took 45 snaps at nickel, in his first game back after being listed probable and not playing against Syracuse. Tre Miller was out. Patterson played 97 percent of the snaps and was called for the pass interference that put the ball on the 2, a call Belichick protested, and Fletcher scored on the next snap. Toney was held to seven catches and 75 yards, well under the 136 yards a game he was averaging, and still scored twice. Mensah averaged 9.1 yards an attempt and the longest Miami completion went for 40. That is a secondary that did enough to make Toney work and not enough to stop Mensah's other options.</p></div></article><article class="pos gc"><div class="ph"><span class="stamp gc" aria-label="Grade C"><span class="gl">C</span></span><div><h3>Safeties</h3><p class="pi">Greg Smith III 62, Coleman Bryson 38, Javion Butts 26</p></div></div><div class="pb"><p>Peyton Waters, the free safety, did not play for the second week in a row after being listed questionable again, so Bryson and Butts split the spot (38 and 26) and Smith played all but one snap at strong safety. Smith had three interceptions coming in and didn't get a look. Bryson was the best story of the group: he came up with both onside kicks for UNC, and both of them were called back by penalties. As a group they were average: no turnovers, no big mistake I can point to, and Miami's longest pass was 40 yards.</p></div></article></div>
+</div></section>
+
+<section id="special"><div class="wrap">
+  <div class="sec-h"><h2>Special teams and coaching</h2></div>
+  <div class="pgrid"><article class="pos gc"><div class="ph"><span class="stamp gc" aria-label="Grade C-"><span class="gl">C</span><span class="gm">−</span></span><div><h3>Special teams</h3><p class="pi">Verhoff, the punt unit, and the onside kicks</p></div></div><div class="pb"><p>Rece Verhoff went 5 for 5 on extra points and never attempted a field goal, because UNC scored only touchdowns. UNC punted once, 28 yards on that opening drive, and Miami fair caught it, so Toney, the returner I flagged in the preview, got no return. Miami kicked off seven times and every one was a touchback, which gave UNC's returners nothing to do, and UNC's own kickoffs gave Miami two returns for 44 yards (a 22-yard average, long of 24) and three touchbacks. Miami's one field goal was a 25-yarder and its one punt went 43. None of that decided the game. The two failed onside kicks did, or at least ended it.</p><p>Coleman Bryson recovered two of the three onside attempts, and both were taken away: one for offside, one when Seelmann made contact before the ball had traveled 10 yards. When a unit does the hard part twice and loses the ball both times to a discipline mistake, the grade has to reflect that. Belichick has a reputation as a special-teams coach, and the offside is the sort of mistake that shouldn't come from a team that has practiced this situation. I have the unit at a C- for that reason alone. Everything else it did was neutral.</p></div></article><article class="pos gb"><div class="ph"><span class="stamp gb" aria-label="Grade B"><span class="gl">B</span></span><div><h3>Coaching</h3><p class="pi">Offense A-, defense C, discipline C</p></div></div><div class="pb"><p>I'd split it. The offense gets an A-. Belichick and his staff took a team that had not scored more than 24 in regulation against an FBS opponent all year and put 35 on the best team in the country by getting Edwards the ball out on time, spreading it to nine receivers, living in two-tight-end sets and mixing in run-pass options and a rollout. The second-half opening drive went 75 yards in eight plays to take a lead, and the 16-play drive after Miami went back in front is the staff's best work of the night. Going 2 for 2 on fourth down is a good sign of an aggressive, confident staff.</p><p>The defense gets a C. It had a plan against Mensah that didn't produce a sack from anyone but a linebacker, and nothing the staff drew up shut down Miami for more than one drive. After the game Belichick said the Hurricanes "didn't mix it up" and ran what they'd run all year, and he said he thought UNC "defended them pretty well" even though it had "a hard time handling" them. That's partly true. Miami was 69 rushing yards and 136 total yards under its averages, so the plan was not a failure in volume. It failed at the end of drives, and that's where games are decided. The penalties and the onside kick are on the staff too, and I'd put overall coaching at a B. The offense is good enough to win a game like this one, and the defense and the discipline lost it.</p></div></article></div>
+</div></section>
+
+<section id="preview"><div class="wrap">
+  <div class="sec-h"><h2>How my preview held up</h2><p>I picked UNC 34-31.</p></div>
+  <p class="blurb">I got the shape of the game right and the ending wrong. The pieces of the plan that depended on the offense mostly worked, and the pieces that depended on the defense mostly didn't.</p>
+  <div class="tw"><table class="pv"><thead><tr><th>What I said</th><th>What happened</th><th>Result</th></tr></thead><tbody><tr><th scope="row">Win the possession battle</th><td>30:51 to 29:09 for UNC</td><td><span class="chip-r ok">Right</span></td></tr><tr><th scope="row">Convert on third and fourth down</th><td>8 for 11 on third, 2 for 2 on fourth</td><td><span class="chip-r ok">Right</span></td></tr><tr><th scope="row">Don&#x27;t turn it over</th><td>One lost fumble, with 5:33 left</td><td><span class="chip-r no">Wrong</span></td></tr><tr><th scope="row">Pressure Mensah up the middle with Buchanan out</th><td>One sack, one quarterback hit</td><td><span class="chip-r no">Wrong</span></td></tr><tr><th scope="row">Tight end seams and screens</th><td>Thurman 5 for 70 and two touchdowns, 96 tight end snaps</td><td><span class="chip-r ok">Right</span></td></tr><tr><th scope="row">Two or three clean shots downfield</th><td>Longest completion 28 yards, 12.2 a catch</td><td><span class="chip-r mid">Mixed</span></td></tr><tr><th scope="row">UNC wins the penalty battle</th><td>6 for 37 against Miami&#x27;s 3 for 30</td><td><span class="chip-r no">Wrong</span></td></tr><tr><th scope="row">Edwards has to stay upright</th><td>Four sacks, six hits and the fumble</td><td><span class="chip-r mid">Concern was right</span></td></tr><tr><th scope="row">Fletcher and Mallory wear the defense down</th><td>142 yards at 4.3, and Fletcher scored from the 2 twice</td><td><span class="chip-r mid">Half right</span></td></tr><tr><th scope="row">UNC 34, Miami 31</th><td>Miami 38, UNC 35</td><td><span class="chip-r mid">Close, wrong winner</span></td></tr></tbody></table></div>
+  <div class="prose wide">
+    <p>The three conditions I put in the first paragraph of the preview were the possession battle, third and fourth down, and no turnovers. UNC met two and missed the third, and the third is the one that decided the game. I don't think that's a coincidence. A team that has to win by being perfect in the margins can't afford one play in the margins that isn't.</p><p>The pass rush is the miss I keep coming back to. I wrote that the way into this game was Abou Jaoude and Lewis working stunts into a patched interior line, and that was the target I was most confident in. It produced one sack, and the sack came from a linebacker. I don't know yet whether Miami simply got the ball out faster than UNC's rushers could get home, or whether UNC's plan never gave them a clean look. That is the first thing I'd go back and watch on tape. Whichever it is, my read on that matchup was wrong, and it was the matchup the whole pick was built around.</p><p>The other miss was the penalties. I pointed at Miami's 62.9 penalty yards a game and Carolina's 31.7 as a built-in edge, and Miami had 30 against UNC's 37. Two of UNC's flags took away onside recoveries, one took away a touchdown, and one put the ball on the 2. I'd call that the biggest swing between what I expected and what happened.</p><p>My script had it tied at 10 at the half. It was 17-14 Miami. It had Miami going up 24-17 and 31-24 in the fourth quarter, with Edwards answering each time and Verhoff winning it. The real game did something close to that: Miami went up 24-21, UNC answered to lead 28-24, Miami answered to lead 31-28. The difference is that the script ended with UNC getting a stop and a kick, and the real one ended with a strip-sack and a 10-point hole. Edwards did answer, in under a minute, exactly as I thought he would. UNC just needed one more stop, and the defense didn't have one.</p>
+  </div>
+</div></section>
+
+<section id="snaps"><div class="wrap">
+  <div class="sec-h"><h2>Snap counts</h2><p>Bar length is the share of snaps. Offense played 67 snaps and defense 63.</p></div>
+  <div class="two snaps">
+    <div><h3 class="sub-h">Offense <span>67 snaps</span></h3><div class="snap off"><div class="sg"><h4>QB</h4><div class="sr"><span class="sn">Billy Edwards Jr.</span><span class="sb"><i style="width:100%"></i></span><span class="sv">67 <em>100%</em></span></div></div><div class="sg"><h4>RB</h4><div class="sr"><span class="sn">Demon June</span><span class="sb"><i style="width:43%"></i></span><span class="sv">29 <em>43%</em></span></div><div class="sr"><span class="sn">Jaylen McGill</span><span class="sb"><i style="width:40%"></i></span><span class="sv">27 <em>40%</em></span></div><div class="sr"><span class="sn">Benjamin Hall</span><span class="sb"><i style="width:21%"></i></span><span class="sv">14 <em>21%</em></span></div></div><div class="sg"><h4>FB</h4><div class="sr"><span class="sn">Peter Pesansky</span><span class="sb"><i style="width:3%"></i></span><span class="sv">2 <em>3%</em></span></div></div><div class="sg"><h4>TE</h4><div class="sr"><span class="sn">Jelani Thurman</span><span class="sb"><i style="width:97%"></i></span><span class="sv">65 <em>97%</em></span></div><div class="sr"><span class="sn">Jordan Washington</span><span class="sb"><i style="width:33%"></i></span><span class="sv">22 <em>33%</em></span></div><div class="sr"><span class="sn">Shamar Easter</span><span class="sb"><i style="width:7%"></i></span><span class="sv">5 <em>7%</em></span></div><div class="sr"><span class="sn">Carson Sneed</span><span class="sb"><i style="width:6%"></i></span><span class="sv">4 <em>6%</em></span></div></div><div class="sg"><h4>OL</h4><div class="sr"><span class="sn">Jordan Hall (LT)</span><span class="sb"><i style="width:100%"></i></span><span class="sv">67 <em>100%</em></span></div><div class="sr"><span class="sn">Jac&#x27;Qawn McRoy (RT)</span><span class="sb"><i style="width:100%"></i></span><span class="sv">67 <em>100%</em></span></div><div class="sr"><span class="sn">Christo Kelly (C)</span><span class="sb"><i style="width:100%"></i></span><span class="sv">67 <em>100%</em></span></div><div class="sr"><span class="sn">Andrew Threatt (guard)</span><span class="sb"><i style="width:94%"></i></span><span class="sv">63 <em>94%</em></span></div><div class="sr"><span class="sn">Cristian Alvarez (guard)</span><span class="sb"><i style="width:82%"></i></span><span class="sv">55 <em>82%</em></span></div><div class="sr"><span class="sn">Aidan Banfield (guard)</span><span class="sb"><i style="width:24%"></i></span><span class="sv">16 <em>24%</em></span></div></div><div class="sg"><h4>WR</h4><div class="sr"><span class="sn">Jordan Shipp</span><span class="sb"><i style="width:100%"></i></span><span class="sv">67 <em>100%</em></span></div><div class="sr"><span class="sn">Nyqir Helton</span><span class="sb"><i style="width:58%"></i></span><span class="sv">39 <em>58%</em></span></div><div class="sr"><span class="sn">Trech Kekahuna</span><span class="sb"><i style="width:55%"></i></span><span class="sv">37 <em>55%</em></span></div><div class="sr"><span class="sn">Mason Humphrey</span><span class="sb"><i style="width:36%"></i></span><span class="sv">24 <em>36%</em></span></div></div></div></div>
+    <div><h3 class="sub-h">Defense <span>63 snaps</span></h3><div class="snap def"><div class="sg"><h4>DT</h4><div class="sr"><span class="sn">Leroy Jackson</span><span class="sb"><i style="width:81%"></i></span><span class="sv">51 <em>81%</em></span></div><div class="sr"><span class="sn">Xavier Lewis</span><span class="sb"><i style="width:78%"></i></span><span class="sv">49 <em>78%</em></span></div><div class="sr"><span class="sn">Isaiah Johnson</span><span class="sb"><i style="width:65%"></i></span><span class="sv">41 <em>65%</em></span></div><div class="sr"><span class="sn">Nicco Maggio</span><span class="sb"><i style="width:22%"></i></span><span class="sv">14 <em>22%</em></span></div><div class="sr"><span class="sn">Trey Giddens</span><span class="sb"><i style="width:11%"></i></span><span class="sv">7 <em>11%</em></span></div></div><div class="sg"><h4>Edge</h4><div class="sr"><span class="sn">Melkart Abou Jaoude</span><span class="sb"><i style="width:84%"></i></span><span class="sv">53 <em>84%</em></span></div><div class="sr"><span class="sn">Jaylen Harvey</span><span class="sb"><i style="width:70%"></i></span><span class="sv">44 <em>70%</em></span></div><div class="sr"><span class="sn">Donovan Hoilette Jr.</span><span class="sb"><i style="width:35%"></i></span><span class="sv">22 <em>35%</em></span></div></div><div class="sg"><h4>LB</h4><div class="sr"><span class="sn">Derek McDonald</span><span class="sb"><i style="width:100%"></i></span><span class="sv">63 <em>100%</em></span></div><div class="sr"><span class="sn">Peyton Seelmann</span><span class="sb"><i style="width:76%"></i></span><span class="sv">48 <em>76%</em></span></div><div class="sr"><span class="sn">Timir Hickman-Collins</span><span class="sb"><i style="width:22%"></i></span><span class="sv">14 <em>22%</em></span></div><div class="sr"><span class="sn">Calvin Thomas</span><span class="sb"><i style="width:6%"></i></span><span class="sv">4 <em>6%</em></span></div><div class="sr"><span class="sn">Emmanuel Nwaiwu</span><span class="sb"><i style="width:5%"></i></span><span class="sv">3 <em>5%</em></span></div></div><div class="sg"><h4>CB</h4><div class="sr"><span class="sn">Jaiden Patterson</span><span class="sb"><i style="width:97%"></i></span><span class="sv">61 <em>97%</em></span></div><div class="sr"><span class="sn">Kenton Dopson III</span><span class="sb"><i style="width:73%"></i></span><span class="sv">46 <em>73%</em></span></div><div class="sr"><span class="sn">Kaleb Cost</span><span class="sb"><i style="width:71%"></i></span><span class="sv">45 <em>71%</em></span></div><div class="sr"><span class="sn">Jalon Thompson</span><span class="sb"><i style="width:3%"></i></span><span class="sv">2 <em>3%</em></span></div></div><div class="sg"><h4>S</h4><div class="sr"><span class="sn">Greg Smith III</span><span class="sb"><i style="width:98%"></i></span><span class="sv">62 <em>98%</em></span></div><div class="sr"><span class="sn">Coleman Bryson</span><span class="sb"><i style="width:60%"></i></span><span class="sv">38 <em>60%</em></span></div><div class="sr"><span class="sn">Javion Butts</span><span class="sb"><i style="width:41%"></i></span><span class="sv">26 <em>41%</em></span></div></div></div></div>
+  </div>
+  <div class="notes">
+    <p><b>Who was back and who wasn't.</b> Last week the story was Cost, Benjamin Hall and Waters not playing at Syracuse after being listed probable. Two of the three came back: Cost played 45 snaps at nickel and Hall played 14. Waters did not appear in the counts, so he has now missed two straight, and Jonathan Agumadu and Zavion Griffin-Haynes, both listed questionable on Wednesday, didn't show up either. Tre Miller and Keeyun Chapman were out. Jordan Hall (67 of 67) and Andrew Threatt (63) played through questionable tags. Apart from safety, the first-team lineup was mostly intact.</p><p><b>The guard spots.</b> Two guard spots at 67 snaps each is 134, and Threatt, Alvarez and Banfield played exactly 134 between them (63, 55 and 16). Alvarez, whom I'd listed as the sixth lineman, played the second most. Banfield, whom the depth chart had as the starter, played the least. Something changed in how UNC used its guards this week, and I'd be watching it at UConn.</p><p><b>Skill personnel.</b> Receivers took 167 snaps, tight ends 96 and backs 72, which across 67 plays is 2.5 receivers, 1.4 tight ends and 1.1 backs a play. That is a lot of two-tight-end football, and Thurman never came off the field. Easter, who had the 75-yard seam at Pitt, played five snaps behind Washington's 22. Helton (39) played two more snaps than Kekahuna (37), and CJ Sadler and Carnell Warren didn't appear at receiver.</p><p><b>Defensive personnel.</b> Interior linemen and edge players took 281 snaps, 4.5 a play, linebackers 132 (2.1), corners 154 (2.4) and safeties 126 (2.0). That reads as a defense that used a fifth lineman and only four defensive backs on close to half its snaps, which is a lot of bodies up front against a team that wanted to throw. Jackson and Lewis played about four of every five snaps, and Abou Jaoude 84 percent. On the back end, Kenton Dopson played 46 snaps and Jalon Thompson 2, which settles the question I had going in about who was CB2.</p>
+  </div>
+</div></section>
+
+<section id="grades"><div class="wrap">
+  <div class="sec-h"><h2>Report card</h2></div>
+  <div class="gtop">
+    <div class="gt-big"><span class="stamp ga stamp-big" aria-label="Grade A"><span class="gl">A</span></span><div><b>Team</b><span>A loss by three to the No. 1 team where the offense did its job. The defense and the flags are why it wasn&#x27;t a win.</span></div></div>
+    <p class="blurb">I'd put the team at an A. That's generous next to a C defense and a C- on the special-teams unit that mattered at the end, but it's an A- offense, a three-point loss at home to the No. 1 team in the country, and a game that turned on one fumble. I graded against the opponent as well as the scale, because giving up 38 to an offense that averages 49 doesn't read the same as giving up 38 to anyone else.</p>
+  </div>
+  <h3 class="sub-h">Offense</h3><div class="tiles"><div class="tile"><div class="tt">Quarterback</div><span class="stamp ga" aria-label="Grade A"><span class="gl">A</span></span><p>28 of 34, 341 yards, 4 TD, no interceptions. The strip-sack is the only blemish.</p></div><div class="tile"><div class="tt">Running backs</div><span class="stamp gb" aria-label="Grade B"><span class="gl">B</span></span><p>66 team rushing yards at 2.2 a carry, but that includes sack losses and a touchdown run erased by a hold. June scored and McGill caught six.</p></div><div class="tile"><div class="tt">Wide receivers</div><span class="stamp gb" aria-label="Grade B+"><span class="gl">B</span><span class="gm">+</span></span><p>Shipp and Kekahuna scored, nine different catchers, no catch over 28 yards.</p></div><div class="tile"><div class="tt">Tight ends</div><span class="stamp ga" aria-label="Grade A"><span class="gl">A</span></span><p>Thurman 5-70-2, 65 of 67 snaps, 96 combined snaps for the group.</p></div><div class="tile"><div class="tt">Offensive line</div><span class="stamp gc" aria-label="Grade C+"><span class="gl">C</span><span class="gm">+</span></span><p>Four sacks, six hits, a costly hold, a 2.2 average. Eight third-down conversions and five 75-yard touchdown drives.</p></div></div>
+  <h3 class="sub-h">Defense</h3><div class="tiles"><div class="tile"><div class="tt">Interior defensive line</div><span class="stamp gb" aria-label="Grade B-"><span class="gl">B</span><span class="gm">−</span></span><p>Held Miami to 142 rushing yards, 69 under its average. Couldn&#x27;t stop the 2-yard touchdowns.</p></div><div class="tile"><div class="tt">Edge rushers</div><span class="stamp gd" aria-label="Grade D"><span class="gl">D</span></span><p>One sack on the whole defense, and it wasn&#x27;t an edge player. Mensah had all night.</p></div><div class="tile"><div class="tt">Linebackers</div><span class="stamp gb" aria-label="Grade B-"><span class="gl">B</span><span class="gm">−</span></span><p>McDonald 11 tackles on every snap, Seelmann&#x27;s sack, and the onside penalty.</p></div><div class="tile"><div class="tt">Cornerbacks</div><span class="stamp gc" aria-label="Grade C+"><span class="gl">C</span><span class="gm">+</span></span><p>Toney held to 75 yards, but the interference call, 9.1 yards an attempt allowed and two Toney touchdowns.</p></div><div class="tile"><div class="tt">Safeties</div><span class="stamp gc" aria-label="Grade C"><span class="gl">C</span></span><p>No turnovers, no big mistakes, no big plays. Waters out again.</p></div></div>
+  <h3 class="sub-h">Special teams and coaching</h3><div class="tiles two-t"><div class="tile"><div class="tt">Special teams</div><span class="stamp gc" aria-label="Grade C-"><span class="gl">C</span><span class="gm">−</span></span><p>Two onside recoveries erased by flags. Verhoff 5 for 5 on extra points.</p></div><div class="tile"><div class="tt">Coaching</div><span class="stamp gb" aria-label="Grade B"><span class="gl">B</span></span><p>A- on offense, C on defense, and a C on discipline.</p></div></div>
+  <p class="balls">Game balls: Edwards for the 341 and the four touchdowns, Thurman for being the only tight end Miami couldn't cover, and McDonald for 11 tackles on every snap. The play I'd take back is the fumble.</p>
+</div></section>
+
+<section id="next"><div class="wrap">
+  <div class="sec-h"><h2>Where this leaves UNC</h2></div>
+  <div class="prose wide">
+    <p class="lead">Carolina is 4-4 and 2-3 in the ACC, and it has lost two straight by a combined four points: 31-30 in overtime to Syracuse and 38-35 to Miami. It is now 0-12 all time against No. 1-ranked opponents. The path to a bowl is the same as it was a week ago, only narrower. UNC needs six wins, has four, and has four games left: at UConn on Nov. 7 at noon, Louisville at home on Nov. 14, at Virginia on Nov. 21, and NC State at home on Nov. 28. Two wins in four gets it there.</p><p>The part I'd carry forward is the offense. Edwards looked like a quarterback who knows where he's going with the ball, Thurman is a real number-one tight end, Shipp played every snap, and the line didn't give up a sack on 34 of 38 dropbacks. UNC's 35 points were the most that Miami defense has allowed in regulation all year. If it can do that against that defense, it can score against UConn, Louisville, Virginia and NC State. I'm not going to pretend those are Miami's defense, but they're not going to be easier to move on than the best team in the country was either.</p><p>The part I wouldn't carry forward is everything else. The defense got one sack and one hit against a quarterback it needed to bother, watched Miami score touchdowns on its last three full possessions and couldn't stop Fletcher from the 2-yard line twice. The penalties came at exactly the wrong moments, and two of them took the final chance away. The run game was 2.2 a carry. And UNC committed the only turnover of the game, the one that decided it. Those are all fixable. The pass rush has to show up, the flags have to stop, and Edwards has to get rid of the ball.</p><p>Miami moves to 8-0 and 6-0 in the league and goes to South Bend next to play No. 5 Notre Dame. The team that gave up 35 in regulation here is going to be asked some of the same questions. UNC will be asked whether it can beat a defense that doesn't give it that kind of day. I think it can. But the standings only care about the number in the wins column, and UNC has four, with four games left to make it six.</p>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><p class="note">Grades are mine.</p></div></footer>
+
+<script>
+(function () {
+  var EV = [{"c": "Q1 8:40", "tm": "Miami", "d": "Toney 2-yard pass from Mensah", "s": "0-7", "x": 16.57, "y": 66.97}, {"c": "Q2 11:54", "tm": "UNC", "d": "Thurman 8-yard pass from Edwards", "s": "7-7", "x": 34.22, "y": 39.39}, {"c": "Q2 7:49", "tm": "Miami", "d": "Fletcher 31-yard pass from Mensah", "s": "7-14", "x": 40.35, "y": 66.97}, {"c": "Q2 2:00", "tm": "UNC", "d": "Thurman 8-yard pass from Edwards", "s": "14-14", "x": 49.07, "y": 39.39}, {"c": "Q2 0:25", "tm": "Miami", "d": "Weinberg 25-yard field goal", "s": "14-17", "x": 51.45, "y": 51.21}, {"c": "Q3 10:59", "tm": "UNC", "d": "Shipp 16-yard pass from Edwards", "s": "21-17", "x": 58.1, "y": 23.64}, {"c": "Q3 5:19", "tm": "Miami", "d": "Fletcher 2-yard run", "s": "21-24", "x": 66.6, "y": 51.21}, {"c": "Q4 11:52", "tm": "UNC", "d": "June 1-yard run", "s": "28-24", "x": 79.27, "y": 23.64}, {"c": "Q4 7:52", "tm": "Miami", "d": "Fletcher 2-yard run, 4th-and-1", "s": "28-31", "x": 85.27, "y": 51.21}, {"c": "Q4 2:37", "tm": "Miami", "d": "Toney 9-yard pass from Mensah", "s": "28-38", "x": 93.15, "y": 78.79}, {"c": "Q4 1:42", "tm": "UNC", "d": "Kekahuna 15-yard pass from Edwards", "s": "35-38", "x": 94.52, "y": 51.21}];
+  var prog = document.getElementById('prog');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav nav a'));
+  var secs = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  function onScroll() {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    if (prog) prog.style.width = (max > 0 ? Math.min(100, (h.scrollTop || window.pageYOffset) / max * 100) : 0) + '%';
+    var cur = -1, y = window.pageYOffset + 120;
+    secs.forEach(function (s, i) { if (s && s.offsetTop <= y) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle('on', i === cur); });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  var wrap = document.getElementById('flowwrap');
+  var tip = document.getElementById('tip');
+  if (wrap && tip) {
+    function show(i) {
+      var e = EV[i];
+      tip.innerHTML = '<b>' + e.c + ' &middot; ' + e.tm + '</b><span class="s">' + e.s + '</span><br>' + e.d;
+      tip.style.left = Math.min(Math.max(e.x, 14), 86) + '%';
+      tip.style.top = e.y + '%';
+      tip.hidden = false;
+    }
+    function hide() { tip.hidden = true; }
+    Array.prototype.forEach.call(wrap.querySelectorAll('.hit'), function (c) {
+      var i = +c.getAttribute('data-i');
+      c.addEventListener('mouseenter', function () { show(i); });
+      c.addEventListener('mouseleave', hide);
+      c.addEventListener('click', function () { show(i); });
+    });
+    document.addEventListener('click', function (ev) { if (!ev.target.classList || !ev.target.classList.contains('hit')) hide(); });
+  }
+})();
+
+</script>
+</body>
+</html>
